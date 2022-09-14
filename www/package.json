@@ -1,0 +1,23 @@
+{
+  "name": "www",
+  "version": "1.0.0",
+  "description": "`npm init -y`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server",
+    "build": "webpack build "
+  },
+  "keywords": [],
+  "author": "Bruno Mogetta",
+  "license": "ISC",
+  "dependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "rust_snake_game_rust-wasm-course": "file:../pkg"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^4.11.0"
+  }
+}

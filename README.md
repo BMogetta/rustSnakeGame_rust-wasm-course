@@ -28,6 +28,22 @@ rustc --version
 
 <br>
 
+Rust needs to be compile -uses LLVM- before execution
+```
+rustc <file-name>
+
+./main
+```
+
+<br>
+
+Initialize a project with
+`cargo init`
+
+<br>
+
+Run your project with `cargo run`
+
 ---
 
 <a name="wasm"></a>
