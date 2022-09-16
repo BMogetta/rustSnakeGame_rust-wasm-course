@@ -1,0 +1,25 @@
+{
+  "name": "rust_games_server",
+  "version": "1.0.0",
+  "description": "This repository contains the source code and my notes about the course of Rust & WebAssembly with TS that I'm taking",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BMogetta/rustSnakeGame_rust-wasm-course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BMogetta/rustSnakeGame_rust-wasm-course/issues"
+  },
+  "homepage": "https://github.com/BMogetta/rustSnakeGame_rust-wasm-course#readme",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.18.1"
+  }
+}
