@@ -29,7 +29,6 @@ npm install --save webpack-cli
 npm install --save-dev webpack-dev-server
 npm install --save copy-webpack-plugin
 npm install --save typescript ts-loader
-
 ```
 <br>
 
