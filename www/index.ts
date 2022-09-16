@@ -1,11 +1,13 @@
 
-import init, { World, Direction } from "rust_games";
+import init, { World, Direction, GameStatus } from "rust_games";
 import {random} from "./utils/random"
 
 init().then( wasm => {
 
-  const CELL_SIZE = 10;
-  const WORLD_WIDTH = 8;
+  // CELL_SIZE handle the size of every square -> size of the board
+  const CELL_SIZE = 25;
+  // WORLD_WIDTH handle the ammount of square in the board
+  const WORLD_WIDTH = 15;
   const snakeSpawnIndex = random(WORLD_WIDTH * WORLD_WIDTH);
 
   const world = World.new(WORLD_WIDTH, snakeSpawnIndex);
@@ -21,6 +23,7 @@ init().then( wasm => {
   canvas.height = worldWidth * CELL_SIZE;
   canvas.width = worldWidth * CELL_SIZE;
 
+  // start game button handler
   gameControlBtn.addEventListener("click", _ => {
 
     const status = world.game_status();
@@ -34,6 +37,7 @@ init().then( wasm => {
     }
   });
 
+  // game key handler
   document.addEventListener("keydown", (event) => {
     switch(event.code) {
       case "ArrowUp":
@@ -53,6 +57,7 @@ init().then( wasm => {
 
   //drawWorld will draw the grid of the game
   function drawWorld() {
+    
     ctx.beginPath();
 
     for (let x = 0; x < worldWidth +1; x++) {
@@ -86,10 +91,6 @@ init().then( wasm => {
     );
 
     ctx.stroke();
-
-    if (idx === 1000) {
-      alert("You won!")
-    }
   }
 
   //drawSnake will draw the snake in the grid
@@ -101,12 +102,16 @@ init().then( wasm => {
       world.snake_length()
     )
 
+    // painting the snake in to the grid
+    // filter to avoid re painting head in case of snake crushing into itself
+    // forEach to paint every block
     snakeCells
       .filter((cellIdx, index) => !(index > 0 && cellIdx === snakeCells[0]))
       .forEach((cellIdx, index) => {
         const col = cellIdx % worldWidth;
         const row = Math.floor(cellIdx / worldWidth);
 
+        // to give head with different color than body
         ctx.fillStyle = index === 0 ? "#7878db" : "#000000"
 
         ctx.beginPath();
@@ -128,6 +133,7 @@ init().then( wasm => {
     gamePoints.textContent = world.points().toString();
   }
   
+  // in charge of the order of execution of the drawing functions
   function paint() {
     drawWorld();
     drawSnake();
@@ -135,18 +141,24 @@ init().then( wasm => {
     drawGameStatus();
   }
   
+  //
   function play() {
 
     const status = world.game_status();
 
+    // scape statement for win/loss condition
     if (status == GameStatus.Won || status == GameStatus.Lost) {
       gameControlBtn.textContent = "Re-Play";
       return;
     }
 
+    /**
+     * FPS WILL DETERMINE HOW FAST THE SNAKE MOVES -> HOW HARD THE GAME ACTUALLY IS
+     */
     const fps = 6;
 
     setTimeout( () => {
+      // clear screen before repaiting new conditions
       ctx.clearRect(0,0, canvas.width, canvas.height)
       world.step();
       paint();
@@ -155,5 +167,6 @@ init().then( wasm => {
     }, 1000 / fps)
   }
 
+  // call paint to display game on screen
   paint();
 })

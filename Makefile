@@ -1,13 +1,16 @@
-rust:
-	rustc main.rs
-	./main
-
-run:
-	cargo run
-
 wasm:
 	wasm-pack build --target web
-	pnpm --dir www/ install --force
-	pnpm --dir www/ dev
 
-.PHONY: rust cargo wasm 
+dev:
+	wasm-pack build --target web
+	npm run heroku-prebuild
+	npm run --prefix www dev
+
+prod:
+	npm install
+	wasm-pack build --target web
+	npm run prebuild
+	npm run build
+	npm run start
+
+.PHONY: wasm dev prod

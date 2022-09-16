@@ -1,16 +1,62 @@
-`npm init -y`
+# **Development**
 
-https://webpack.js.org/concepts/
-```
-pnpm add webpack
-pnpm add webpack-cli
-pnpm add --save-dev webpack-dev-server
-pnpm add copy-webpack-plugin
-pnpm add typescript ts-loader
+## **Run the development environment localy -require full instalation- with:**
 
 ```
+make dev
+```
 
-allocator to reduce wasm size
-https://github.com/rustwasm/wee_alloc
+Make will run a script that will serve the current dev version of this repo
 
-https://webpack.js.org/guides/typescript/
+---
+
+### **How to prepare a production environment**
+
+<br>
+
+Within WWW folder, Initialize a Node project with:
+<br>
+
+```
+npm init -y
+```
+<br>
+
+Install necessary packages:
+```
+npm install --save webpack
+npm install --save webpack-cli
+npm install --save-dev webpack-dev-server
+npm install --save copy-webpack-plugin
+npm install --save typescript ts-loader
+
+```
+<br>
+
+---
+
+## **[WebPack](https://webpack.js.org/concepts/)**
+
+At its core, webpack is a static module bundler for modern JavaScript applications. When webpack processes your application, it internally builds a dependency graph from one or more entry points and then combines every module your project needs into one or more bundles, which are static assets to serve your content from.
+
+<br>
+
+---
+## **Documentation for [webpack with TS](https://webpack.js.org/guides/typescript/)**
+
+<br>
+
+---
+
+## **Node scripts**
+<br>
+
+run development server:
+```
+npm run dev
+```
+
+build files:
+```
+npm run build
+```

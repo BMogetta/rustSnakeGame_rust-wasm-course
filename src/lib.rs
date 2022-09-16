@@ -46,7 +46,7 @@ impl Snake {
 
     Snake { 
       body,
-      direction: Direction::Left,
+      direction: Direction::Right,
     }
   }
 }
@@ -159,9 +159,7 @@ impl World {
           }
         }
       
-        let length = self.snake.body.len();
-      
-        for i in 1..length {
+        for i in 1..self.snake_length() {
           self.snake.body[i] = SnakeCell(temp[i - 1].0)
         }
 
@@ -191,18 +189,33 @@ impl World {
     let snake_idx = self.snake_head_idx();
     let row = snake_idx / self.width;
 
+
     return match direction {
-      Direction::Right => {
+
+      //using % and / is computationally expensive but its easier to implement
+      Direction::Right => { 
         SnakeCell((row * self.width) + (snake_idx + 1) % self.width)
       },
       Direction::Left => {
         SnakeCell((row * self.width) + (snake_idx - 1) % self.width)
       },
+      
+      // this version has more line of codes but is smaller when compile and less computationally expensive
       Direction::Up => {
-        SnakeCell((snake_idx - self.width) % self.size)
+        let treshold = snake_idx - (row * self.width);
+        if snake_idx == treshold {
+            SnakeCell((self.size - self.width) + treshold)
+        } else {
+            SnakeCell(snake_idx - self.width)
+        }
       },
       Direction::Down => {
-        SnakeCell((snake_idx + self.width) % self.size)
+        let treshold = snake_idx + ((self.width - row) * self.width);
+        if snake_idx + self.width == treshold {
+            SnakeCell(treshold - ((row + 1) * self.width))
+        } else {
+            SnakeCell(snake_idx + self.width)
+        }
       },
     };
   }
