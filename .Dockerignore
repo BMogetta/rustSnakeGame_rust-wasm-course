@@ -1,0 +1,8 @@
+node_modules
+.github
+.gitignore
+Cargo.*
+Makefile
+README.md
+pkg
+target

@@ -11,7 +11,7 @@ app.use(compression());
 app.use(express.static(public));
 
 app.get("*", (_, res) => {
-  res.sendFile(public + "index.html");
+  res.sendFile(public + "/index.html");
 })
 
 app.listen(port, () => {

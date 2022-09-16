@@ -1,12 +1,12 @@
 {
   "name": "www",
   "version": "1.0.0",
-  "description": "`npm init -y`",
+  "description": "development folder",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server",
-    "build": "webpack build "
+    "build": "webpack build"
   },
   "keywords": [],
   "author": "Bruno Mogetta",

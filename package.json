@@ -5,6 +5,8 @@
   "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "npm install --prefix www",
+    "build": "npm run build --prefix www",
     "start": "node server/index.js"
   },
   "repository": {

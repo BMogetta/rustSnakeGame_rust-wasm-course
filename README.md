@@ -1,6 +1,6 @@
 # **rustSnakeGame is the project exercise of the Rust & WebAssembly course by [Filip Jerga](https://www.youtube.com/c/Eincode/playlists)**
 
-This repository contains the source code and my notes about the course of Rust & WebAssembly with TS that I'm taking
+This repository contains the source code and my notes about the course of Rust & WebAssembly with TS that I toke.
 
 <br>
 
@@ -32,7 +32,7 @@ Rust needs to be compile -uses LLVM- before execution
 ```
 rustc <file-name>
 
-./main
+./<file-name>
 ```
 
 <br>
@@ -52,10 +52,17 @@ Run your project with `cargo run`
 
 WebAssembly is a new type of code that can be run in modern web browsers — it is a low-level assembly-like language with a compact binary format that runs with near-native performance and provides languages such as C/C++, C#, and Rust with a compilation target so that they can run on the web. It is also designed to run alongside JavaScript, allowing both to work together.
 
+<br>
+
 ### Rust to Wasm with [wasm-pack](https://developer.mozilla.org/en-US/docs/WebAssembly/Rust_to_wasm)
 
 ```
 cargo install wasm-pack
+```
+
+### Compile Rust code into wasm with wasm-pack:
+```
+wasm-pack build --target web
 ```
 
 <br>
