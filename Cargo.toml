@@ -1,5 +1,5 @@
 [package]
-name = "rust_snake_game_rust-wasm-course"
+name = "rust_games"
 version = "0.1.0"
 edition = "2021"
 
